@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public Main() {
+		Scanner scan = new Scanner(System.in);
+		int menu =0;
+		
+		do {
+			System.out.println(" Movie Rental");
+			System.out.println("===============");
+			System.out.println("1. Add new movie");
+			System.out.println("2. View movie");
+			System.out.println("3. Rent movie");
+			System.out.println("4. Exit");
+						
+			 do {
+                try {
+                    System.out.print(">> ");
+                    menu = scan.nextInt();
+                } catch (Exception e) {
+                  menu = 0;
+                    System.out.println("please input number between 1 and 4");
+                }
+                scan.nextLine();
+			
+			switch (menu) {
+			case 1:
+				
+				
+				
+				break;
+			case 2:
+				
+				
+				
+				break;
+			case 3:
+	
+				
+				
+				break;
+	
+			}
+                
+                
+                
+			
+		} while (menu != 4);
+		
+		
+		
+		
+		
+
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new Main();
+
+	}
+
+}

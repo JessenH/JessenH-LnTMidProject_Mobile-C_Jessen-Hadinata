@@ -1,0 +1,9 @@
+package Kendaraan;
+
+public class Mobil {
+
+	public Mobil() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

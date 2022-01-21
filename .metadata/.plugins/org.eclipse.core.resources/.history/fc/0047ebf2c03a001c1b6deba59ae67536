@@ -1,0 +1,107 @@
+package main;
+import java.util.Scanner;
+
+public class app {
+
+	public app() {
+		Scanner scan = new Scanner(System.in);
+		int choice = 0, health = 100;
+		String difficulties = "";
+		String name = "";
+		int dex = 0;
+		String weapon = "";
+		
+		
+		System.out.println("KALOFDUTI");
+		do {
+		try {
+			System.out.println("1. Fight");
+			System.out.println("2. Exit");
+			System.out.print("Choice: ");
+			choice = scan.nextInt(); scan.nextLine();
+			
+			} catch (Exception e) {
+				System.out.println("Choose number 1 or 2");
+				scan.nextLine();
+			}
+			
+		}while(choice<1 || choice>2);
+		
+		switch (choice) {
+		case 1:
+			do {
+				System.out.print("Input enemy difficulties [Easy | Medium | Hard] [Case Sensitive]: ");
+				difficulties = scan.nextLine();
+				
+			} while (!difficulties.equals("Easy") && !difficulties.equals("Medium") && !difficulties.equals("Hard"));
+			
+			do {
+				System.out.print("Input Your Name [Maximum 15 characters, No Space]: " );
+				name = scan.nextLine();
+				
+			} while (name.length() > 15 || name.contains(" "));
+			
+			do {
+				System.out.print("Input Your Dexterity [Must be between 1 - 100]: ");
+				dex = scan.nextInt(); scan.nextLine();
+				
+			} while (dex < 1 || dex > 100);
+			
+			
+			do {
+				System.out.print("Input Your Weapon [MP7 | AK47 | M4A1 ]: ");
+				weapon = scan.nextLine();
+				
+			} while (!weapon.equals("MP7") && !weapon.equals("AK47") && !weapon.equals("M4A1"));
+			
+			
+			int enemyHealth = 0, enemyPower = 0, enemyDex = 0, power = 0;
+			
+			if (difficulties.equals("Hard") ) {
+				enemyHealth = 100;
+				enemyPower = 20;
+				enemyDex = 100;
+			}else if (difficulties.equals("Medium"))  {
+				enemyHealth = 75;
+				enemyPower = 15;
+				enemyDex = 70;
+				
+			}else {
+				enemyHealth = 50;
+				enemyPower = 10;
+				enemyDex = 50;
+			}
+			
+			if (weapon.equals("MP7")) {
+				power = 10;
+			}else if (weapon.equals("AK47")) {
+				power = 20;
+			}else {
+				power = 15;
+			}
+			
+			int totalPower = 0;
+			
+			
+			break;
+		default:
+			System.out.println("Thanks for using the program");
+			break;
+		}
+		
+	
+			
+	
+		
+		
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new app();
+	
+	}
+
+}

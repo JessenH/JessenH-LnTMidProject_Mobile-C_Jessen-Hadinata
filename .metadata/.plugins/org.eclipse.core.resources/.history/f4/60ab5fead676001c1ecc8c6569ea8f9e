@@ -1,0 +1,82 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+import javax.management.monitor.CounterMonitor;
+
+import java.util.Arrays;  
+
+public class Main {
+
+	public Main() {
+		Scanner scan = new Scanner(System.in);
+		int jumlah = 0, nilai = 0, nilaiTotal = 0;		
+		int[] frekuensi = new int[] {0,0,0,0,0,0,0,0,0,0};
+
+		ArrayList<Integer > modeList = new ArrayList<>();
+	
+		
+		do {
+		System.out.print("Input jumlah siswa[minimal 10]: ");
+			jumlah = scan.nextInt();
+			scan.nextLine();
+		} while (jumlah < 10);
+		
+		int[] nilaiList = new int [jumlah];
+		for (int i = 0; i < jumlah ; i++) {
+			do {
+				System.out.print("Nilai ke " + (i+1) + ": ");
+				nilai = scan.nextInt(); scan.nextLine();
+				
+			} while (nilai < 1 || nilai > 10);
+			nilaiTotal += nilai;
+	
+			nilaiList[i] = nilai;
+		}
+		
+		
+					ArrayList<Integer > modes = new ArrayList<>();
+					
+					  int maxCount=0;   
+					  for (int i = 0; i < nilaiList.length; ++i){
+					    int count = 0;
+					    for (int j = 0; j < nilaiList.length; ++j){
+					      if (nilaiList[j] == nilaiList[i]) ++count;
+					    }
+					    if (count > maxCount){
+					      maxCount = count;
+					      modes.clear();
+					      modes.add( nilaiList[i] );
+					    } else if ( count == maxCount ){
+					      modes.add( nilaiList[i] );
+					    }
+					  }
+					  
+					  for (int i = 0; i < modes.size(); i++) {
+						if (modes.get(i) == modes.get(i+1)) {
+							modes.remove(i+1);
+						}
+						  
+					}
+					  
+					double average = (double) nilaiTotal/jumlah;	
+					System.out.printf("\nRata-rata = %.4f\n",  average);
+					
+					String formattedString = modes.toString()
+							.replace("[", "")
+						    .replace("]", "");
+					
+					
+					 System.out.println("Modus: " + formattedString);
+			
+	
+	}
+	
+	
+	public static void main(String[] args) {
+		new Main();
+	}
+}
+
+

@@ -1,0 +1,27 @@
+
+public class Main {
+
+	public Main() {
+		
+		
+		System.out.println(" Movie Rental");
+		System.out.println("===============");
+		System.out.println("1. Add new movie");
+		System.out.println("2. View movie");
+		System.out.println("3. Rent movie");
+		System.out.println("4. Exit");
+		
+		
+		
+		
+
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new Main();
+
+	}
+
+}

@@ -1,0 +1,58 @@
+package main;
+import java.util.Scanner;
+
+public class app {
+
+	public app() {
+		Scanner scan = new Scanner(System.in);
+		int choice = 0, health = 100;
+		String difficulties = "";
+				
+		
+		System.out.println("KALOFDUTI");
+		do {
+			System.out.println("1. Fight");
+			System.out.println("2. Exit");
+			System.out.print("Choice: ");
+			choice = scan.nextInt(); scan.nextLine();
+		try {
+			} catch (Exception e) {
+				System.out.println("Choose number 1 or 2");
+				scan.nextLine();
+			}
+			
+		}while(choice<1 || choice>2);
+		
+		switch (choice) {
+		case 1:
+			do {
+				System.out.println("Input enemy difficulties [Easy | Medium | Hard] [Case Sensitive]");
+				difficulties = scan.nextLine();
+				
+			} while (!difficulties.equals("Easy") && !difficulties.equals("Medium") && !difficulties.equals("Hard"));
+			
+			
+			
+			
+			break;
+		default:
+			System.out.println("Thanks for using the program");
+			break;
+		}
+		
+	
+			
+	
+		
+		
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new app();
+	
+	}
+
+}

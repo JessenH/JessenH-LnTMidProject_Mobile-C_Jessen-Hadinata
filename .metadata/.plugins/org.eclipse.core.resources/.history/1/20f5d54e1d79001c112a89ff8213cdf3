@@ -1,0 +1,9 @@
+package Kendaraan;
+
+public class Kendaraan {
+
+	public Kendaraan() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

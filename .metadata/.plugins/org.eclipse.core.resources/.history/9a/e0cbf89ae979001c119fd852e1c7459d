@@ -1,0 +1,6 @@
+package Kendaraan;
+
+public class Mobil extends Kendaraan {
+
+	
+}

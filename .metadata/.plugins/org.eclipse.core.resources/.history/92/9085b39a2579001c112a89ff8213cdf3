@@ -1,0 +1,9 @@
+package Kendaraan;
+
+public class Motor {
+
+	public Motor() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,7 @@
+package Kendaraan;
+
+public class Motor extends Kendaraan {
+
+	
+
+}

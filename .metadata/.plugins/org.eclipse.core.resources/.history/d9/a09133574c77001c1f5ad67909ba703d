@@ -1,0 +1,279 @@
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+		//LAB UAP
+
+	
+	public Main() {
+		Scanner scan = new Scanner(System.in);
+		
+		ArrayList<String> movieList = new ArrayList<>();
+		ArrayList<String> genreList = new ArrayList<>();
+		ArrayList<Double> ratingList = new ArrayList<>();
+		ArrayList<String> statusList = new ArrayList<>();
+		
+		int menu = 0;
+		do {
+			System.out.println("\n\nDoPe TV");
+			System.out.println("1. Add New Movie");
+			System.out.println("2. View Movie");
+			System.out.println("3. Rent a Movie");
+			System.out.println("4. Return a Movie");
+			System.out.println("5. Exit");
+			
+			do {
+				try {
+					
+		            System.out.print(">> ");
+		            menu = scan.nextInt();
+		   
+				} catch (Exception e) {
+					menu = 0;
+					System.out.println("Number must be between 1-5");
+				}
+					scan.nextLine();
+			} while (menu < 1 || menu > 5);
+			
+		switch (menu) {
+		case 1:
+			
+			String movie = "", genre = "";
+			double rating = 6;
+				
+			do {
+				
+					System.out.print("Movie name [5 - 20 characters]: ");
+					movie = scan.nextLine();
+					if (movie .length() < 5 || movie .length() > 20) {
+						movie = "";
+	                    System.out.println("Movie's name must be between 5 - 20 characters!");
+					}
+
+                } while (movie.length() < 5 || movie.length() > 20);
+			movieList.add(movie);
+			do {
+				
+				System.out.print("Movie genre [Action | Drama | Horror][case sensitive]: ");
+				genre = scan.nextLine();
+				if (!genre.equals("Action") && !genre.equals("Drama") &&!genre.equals("Horror")) {
+					genre = "";
+	                System.out.println("Movie genre must be either Action, Drama, or Horror!");
+						
+				}
+				genreList.add(genre);
+				
+			} while (!genre.equals("Action") && !genre.equals("Drama") &&!genre.equals("Horror"));
+			do {
+				System.out.print("Movie rating [0.0 - 5.0]: ");
+				
+				rating = scan.nextDouble(); scan.nextLine();
+				
+				if (rating < 0 || rating > 5) {
+					rating =  6;
+	                System.out.println("Movie rating must be between 0.0 - 5.0!");
+						
+				}
+				
+			} while (rating < 0 || rating > 5 );
+			
+		
+			
+			ratingList.add(rating);
+			statusList.add("Available");
+			System.out.println("Movie added successfuly!");
+			
+			
+			break;
+		case 2:
+			if (movieList.size() <= 0) {
+				System.out.println("Movie list is empty!");
+				
+			}else {
+			// DESCENDING ORDER BELOMAN
+				System.out.println("");
+				System.out.println("No |    Movie Name    |  Genre   |  Rating  |  Status  |");
+//				for (int i = 0; i < movieList.size() ; i++) {
+//					System.out.printf("%-1d  | %-16s |  %s  |  %s     | %-1s |", (i+1), movieList.get(i), 
+//							genreList.get(i), ratingList.get(i), statusList.get(i));
+//					
+//						
+//				}
+				String temp, temp2, temp4;
+				  double temp3;
+			
+				  Collections.sort(movieList);
+			  
+							  
+//				for (int i = 0; i < movieList.size() -1; i++) {
+//					for (int j = i+1 ; j < movieList.size()   ; j++) {
+//							 
+//						if (movieList.get(j).compareTo(movieList.get(i)) > 0){
+//		                    // swap arr[j+1] and arr[j]
+//		                    temp = movieList.get(i);
+//		                    temp2 = genreList.get(i);
+//		                    temp3 = ratingList.get(i);
+//		                    temp4 = statusList.get(i);
+//		                      
+//		                    movieList.set(i,movieList.get(j));
+//		                    movieList.set(j, temp);   
+//		                    
+//		                    genreList.set(i,genreList.get(j));
+//		                    genreList.set(j, temp2);   
+//		                    
+//		                   ratingList.set(i,ratingList.get(j));
+//		                   ratingList.set(j, temp3); 
+//		                    
+//		                    statusList.set(i,statusList.get(j));
+//		                    statusList.set(j, temp4);   
+//		                
+//						}
+//					
+//					
+//					
+//						
+//					}
+
+			
+
+//				System.out.println("No |    Movie Name    |  Genre   |  Rating  |  Status  |");	
+//				System.out.println(" ");
+				
+						
+				
+			
+			for (int i = 0; i <= movieList.size() -1; i++) {
+				System.out.printf("%-1d  | %-16s |  %s  |  %s     | %-1s |\n", (i+1), movieList.get(i), 
+						genreList.get(i), ratingList.get(i), statusList.get(i));
+				
+				
+			}
+				
+				
+			}		
+			
+			break;
+		case 3:
+			if (movieList.size() <= 0) {
+				System.out.println("Movie list is empty!");
+				
+			}else {
+				System.out.println("");
+				System.out.println("No |    Movie Name    |  Genre   |  Rating  |  Status  |");
+				for (int i = 0; i <= movieList.size() -1; i++) {
+					System.out.printf("%-1d  | %-16s |  %s  |  %s     | %-1s |\n", (i+1), movieList.get(i), 
+							genreList.get(i), ratingList.get(i), statusList.get(i));
+					
+					
+				}
+				int jumlah = 0, jumlahCek = 0, durasi = 0;
+				
+					jumlah = movieList.size();
+				
+				
+				do {
+					System.out.println("Which movie do you want to rent? [1 - " + jumlah + "]" );
+					System.out.print(">> ");
+					jumlahCek = scan.nextInt(); scan.nextLine();	
+							
+				} while (jumlahCek > jumlah || jumlahCek < 0);
+				
+				do {
+					System.out.println("How many days you want to borrow the movie? [1 - 7]");
+					System.out.print(">> ");
+					durasi = scan.nextInt(); scan.nextLine();	
+							
+					
+				} while (durasi < 1 || durasi > 7);
+				
+				Random rnd = new Random();
+			    int number = rnd.nextInt(999);
+			    String randomNum = String.format("%03d", number);
+
+				String str = "TR - " + randomNum;   
+			
+				int price =  0, addt = 0;
+				double base = 0.0;
+				
+				base = (double) (1000 * ratingList.get(jumlahCek-1));
+				addt = 2000 * durasi;
+				price = (int) base + addt;
+				
+				System.out.println("ID		: " + str );
+				System.out.println("Movie	: " + movieList.get(jumlahCek-1) );
+				System.out.println("Genre	: " +  genreList.get(jumlahCek-1) );
+				System.out.println("Rating	: " +  ratingList.get(jumlahCek-1) );
+				System.out.println("Price	: " + price);
+											
+				statusList.set(jumlahCek - 1, "Not available");
+			}	
+		
+			break;
+		case 4:
+			if (movieList.size() <= 0) {
+				System.out.println("Movie list is empty!");
+				
+			}else {
+				System.out.println("");
+				System.out.println("No |    Movie Name    |  Genre   |  Rating  |  Status  |");
+				for (int i = 0; i <= movieList.size() -1; i++) {
+					System.out.printf("%-1d  | %-16s |  %s  |  %s     | %-1s |\n", (i+1), movieList.get(i), 
+							genreList.get(i), ratingList.get(i), statusList.get(i));
+					
+					
+				}
+				int returnCek = 0, returnList = 0;
+				
+					returnList= movieList.size();;
+
+				
+				do {
+					System.out.println("Which movie do you want to return? [1 - " + returnList + "]");
+					System.out.print(">> ");
+					returnCek = scan.nextInt(); scan.nextLine();	
+							
+				} while (returnCek > returnList || returnCek < 0);
+				
+						
+				
+					movieList.remove(returnCek - 1);
+					genreList.remove(returnCek - 1);
+					ratingList.remove(returnCek - 1);
+					statusList.remove(returnCek - 1);
+				
+				System.out.println("Moview returned successfully!");
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			break;
+		}	
+			
+			
+			
+			
+		} while (menu !=5);
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	public static void main(String[] args) {
+		new Main();
+
+	}
+
+}

@@ -1,0 +1,267 @@
+import java.nio.channels.ScatteringByteChannel;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Spliterator;
+
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
+import Kendaraan.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		ArrayList<Kendaraan> kendaraanList = new ArrayList<>();
+		int menu = 0,valid = 0, valid1 = 0, valid2 = 0, valid3 = 0;
+		String type, brand, name, license, typeCar =  "";
+		int topSpeed = 0, gasCap = 0, wheel = 0, entertainment = 0, helm = 0;
+				
+		do {
+			System.out.println("\nPT Musang Car");
+			System.out.println("==================");
+			System.out.println("1. Input kendaraan");
+			System.out.println("2. View kendaraan");
+			System.out.print("3. Exit");
+				
+			do {
+				try {
+					System.out.println(">> ");
+					menu = scan.nextInt(); 
+					
+				} catch (Exception e) {
+					menu = 0;
+					System.out.println("\n[!]Input number between 1 - 3!");
+				}
+				scan.nextLine();
+			} while (menu < 1 || menu > 3);
+		
+			switch (menu) {
+			case 1:
+				Kendaraan mobilInput = new Mobil();
+				Kendaraan motorInput = new Motor();
+				// 1. input type
+				do {
+					System.out.print("Input type [Car | Motorcycle]: ");
+					type = scan.nextLine();
+					
+				} while (!type.equals("Car") && !type.equals("Motorcycle"));
+				
+				// 2. input brand
+				do {
+					System.out.print("Input brand [>= 5]: ");
+					brand = scan.nextLine();
+				} while (brand.length() < 5);
+				
+				// 3. input name				
+				do {
+					System.out.print("Input name [>= 5]: ");
+					name = scan.nextLine();
+				} while (name.length() < 5);
+				
+				// 4. input license
+				do {
+					int licenseAngka;
+					System.out.print("Input license: ");
+					license = scan.nextLine();	
+					String[] split = license.split(" "); 
+					
+					if (split[0].charAt(0) >= 'A' && split[0].charAt(0) <= 'Z') {
+						valid1 = 1;
+					}else {
+						valid1 = 0;
+					}
+									
+					if (split[1].length() >= 1 || split[1].length() <=4) {
+						licenseAngka = split[1].length();
+						for (int i = 0; i < licenseAngka; i++) {
+							if (Character.isDigit(split[1].charAt(i))) {
+								valid2 = 1;
+							}else {
+								valid2 = 0;
+								break;
+							}
+						}	
+					}
+				
+					if (split[2].length() >= 1 || split[2].length() <= 3) {
+						if (split[2].charAt(0) >= 'A' && split[2].charAt(0) <= 'Z') {
+							valid3 = 1;
+						}else {
+							valid3 = 0;
+						}
+					}
+				} while (valid1 != 1 || valid2 != 1 || valid3 != 1);
+				
+				// 5. input top speed
+				do {
+					try {
+						System.out.print("Input top speed [100 <= topSpeed <= 250]: ");
+						topSpeed = scan.nextInt();
+					} catch (Exception e) {
+						System.out.print("\n[!]Input number between 100 - 250!");
+					} 
+					scan.nextLine();
+					} while (topSpeed < 100 || topSpeed > 250);
+				
+				// 6. input gas cap
+				do {
+					
+					try {
+						System.out.print("Input gas capacity [30 <= gasCap <= 60]:  ");
+						gasCap = scan.nextInt();
+					} catch (Exception e) {
+						System.out.print("\n[!]Input number between 30 - 60!");
+					}
+					scan.nextLine();
+					
+				} while (gasCap < 30 || gasCap > 60);
+				
+				//	7. wheel (Car / Motorcycle)
+				if (type.equals("Car")) {
+					do {
+						// 7. wheel Car
+						try {
+							System.out.print("Input wheel [4 <= wheel <=6]: ");
+							wheel = scan.nextInt();
+						} catch (Exception e) {
+							System.out.print("\n[!]Input number between 4 - 6!");
+						}
+						scan.nextLine();
+					} while (wheel < 4 || wheel > 6);
+					// 8. type car 
+					do {
+						System.out.print("Input type [SUV | Supercar | Minivan]: ");
+						typeCar = scan.nextLine();
+
+					} while (!typeCar.equals("SUV") && !typeCar.equals("Supercar") && !typeCar.equals("Minivan"));
+					// 9. entertainment car 
+					do {
+						try {
+							System.out.print("Input entertainment system amount [>= 1]: ");
+							entertainment = scan.nextInt();
+						} catch (Exception e) {
+							System.out.print("\n[!]Input number minimum 1!");
+						}
+						scan.nextLine();
+					} while (entertainment < 1);
+				
+				}else {
+					// 7. wheel Motorcycle
+					do {
+						try {
+							System.out.print("Input wheel [2 <= wheel <=3]: ");
+							wheel = scan.nextInt();
+						} catch (Exception e) {
+							System.out.print("\n[!]Input number between 2 - 3!");
+						}
+						scan.nextLine();
+
+					} while (wheel < 2 || wheel > 3);
+				
+					// 8. Helm
+					do {
+						try {
+							System.out.print("Input helm [>= 1]: ");
+							helm = scan.nextInt();
+						} catch (Exception e) {
+							System.out.print("\n[!]Input number minimum 1!");
+						}
+							scan.nextLine();			
+					} while (helm < 1);
+				}
+				
+			/* 1. type
+			 * 2. brand
+			 * 3. name
+			 * 4. license
+			 * 5. top speed
+			 * 6. gas
+			 * 7.(Car) wheel
+			 * 8. type car
+			 * 9. entertainment car
+			 * 10. (Motorcycle) wheel
+			 * 11. Helm
+			 */
+				if (type.equals("Car")) {		
+					 mobilInput.setType(type);
+					 mobilInput.setBrand(brand);
+					 mobilInput.setName(name);
+					 mobilInput.setLicense(license);
+					 mobilInput.setTopSpeed(topSpeed);
+					 mobilInput.setGasCap(gasCap);
+					 mobilInput.setWheel(wheel);
+					 mobilInput.setTypeCar(typeCar);
+					 mobilInput.setEntertainment(entertainment);
+					 
+					 kendaraanList.add(mobilInput);
+				}else {
+					 motorInput.setType(type);
+					 motorInput.setBrand(brand);
+					 motorInput.setName(name);
+					 motorInput.setLicense(license);
+					 motorInput.setTopSpeed(topSpeed);
+					 motorInput.setGasCap(gasCap);
+					 motorInput.setWheel(wheel);
+					 motorInput.setHelm(helm);
+					 
+					 kendaraanList.add(motorInput);
+				}
+				
+				System.out.print("Enter to return");
+				scan.nextLine();
+				
+				break;
+			case 2:
+				System.out.println("\n|===|===============|===============|");
+				System.out.println("|No |Type           |Name           |");
+				System.out.println("|===|===============|===============|");
+				int choice = 0;
+				
+				for (int i = 0; i < kendaraanList.size() ; i++) {
+					if (kendaraanList.size() > 0) {
+						System.out.printf("|%-3d|%-15s|%-15s|", (i+1), kendaraanList.get(i).getType(),
+								kendaraanList.get(i).getName());	
+						System.out.println("\n|===|===============|===============|");
+					}
+				}
+				
+				do {
+					try {
+						System.out.println("Pick a vehicle number to test drive[Enter '0' to exit]: ");
+						choice = scan.nextInt();
+					} catch (Exception e) {
+						System.out.print("\n[!]Input number vehicle or 0 to exit!");
+					}
+					scan.nextLine();
+				} while (choice < 0 || choice > kendaraanList.size());
+				
+				
+				System.out.println("Brand: " + kendaraanList.get(choice-1).getBrand());
+				System.out.println("Name: " + kendaraanList.get(choice-1).getName());
+				System.out.println("License Plate: " + kendaraanList.get(choice-1).getLicense());
+				System.out.println("Type: " + kendaraanList.get(choice-1).getTypeCar());
+				System.out.println("Gas Capacity: " + kendaraanList.get(choice-1).getGasCap());
+				System.out.println("Top Speed: " + kendaraanList.get(choice-1).getTopSpeed());
+				System.out.println("Wheel(s): " + kendaraanList.get(choice-1).getWheel());
+				
+				if (kendaraanList.get(choice-1).getType().equals("Motorcycle")) {
+					System.out.println("Total Helm: " + kendaraanList.get(choice-1).getHelm());
+					
+					
+				}else {
+					
+					
+				}
+				
+				
+				
+				break;
+			}
+			
+			
+			
+			
+		} while (menu !=3);
+		
+	}
+}

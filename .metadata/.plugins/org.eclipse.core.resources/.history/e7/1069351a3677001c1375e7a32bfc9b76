@@ -1,0 +1,126 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+	
+	public static String randomString(int angka, int huruf) {
+        Random randGen = null;//from  w ww  .j a  va2  s  .co m
+        char[] letters = null;
+        char[] numbers = null;
+        if (angka < 1) {
+            return null;
+        }
+
+        if (randGen == null) {
+            randGen = new Random();
+            numbers= ("0123456789").toCharArray();
+            letters = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ").toCharArray();
+        }
+        char[] randBuffer = new char[angka];
+        char[] randBuffer2 = new char[angka];
+        String anjay = "";
+        for (int i = 0; i < randBuffer.length; i++) {
+      //      randBuffer[i] = numbers[randGen.nextInt(10)] ;
+  //          randBuffer[i] = letters[randGen.nextInt(26)]
+             anjay = "" + numbers[randGen.nextInt(10)] + letters[randGen.nextInt(26)];
+        }
+        return new String(anjay);
+    }
+	
+	public Main() {
+		Scanner scan = new Scanner(System.in);
+		int menu =0;
+		
+		
+		ArrayList<String> titleList = new ArrayList<String>();
+		ArrayList<String> genreList= new ArrayList<String>();
+		ArrayList<Integer> ratingList= new ArrayList<Integer>();
+		do {
+			System.out.println("\n\nMovie Rental");
+			System.out.println("===============");
+			System.out.println("1. Add new movie");
+			System.out.println("2. View movie");
+			System.out.println("3. Rent movie");
+			System.out.println("4. Exit");
+			
+			
+			System.out.println(randomString(1,1));
+			
+			
+			do {
+			try {
+				
+	            System.out.print(">> ");
+	            menu = scan.nextInt();
+	   
+			} catch (Exception e) {
+				menu = 0;
+				System.out.println("Number must be between 1-4");
+			}
+				scan.nextLine();
+			} while (menu < 1 || menu > 4);
+			
+			switch (menu) {
+			case 1:
+				String title = "", genre = "";
+				int rating = 0;
+				do {
+					System.out.print("Add movie title[3-20]: ");
+					title  = scan.nextLine();
+					
+				} while (title.length() < 3 ||title.length() > 20 );
+				titleList.add(title);
+								
+				do {
+					System.out.print("Add movie genre[Horror, Comedy, Action]: ");
+					genre = scan.nextLine();
+							
+				} while (!genre.equals("Horror") && !genre.equals("Comedy") &&
+						!genre.equals("Action"));
+				genreList.add(genre);
+				
+				do {
+					System.out.print("Add movie rating[1-10]: ");
+					rating = scan.nextInt(); scan.nextLine(); 
+					
+					
+				} while (rating < 1 || rating > 10);
+				ratingList.add(rating);				
+				
+				
+				
+				break;
+			case 2:
+				
+				
+				break;
+			case 3:	
+				
+				
+				break;
+			}
+			
+			
+			
+		
+	
+		
+		} while (menu != 4);
+		
+		
+		
+		
+		
+
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new Main();
+
+	}
+
+}

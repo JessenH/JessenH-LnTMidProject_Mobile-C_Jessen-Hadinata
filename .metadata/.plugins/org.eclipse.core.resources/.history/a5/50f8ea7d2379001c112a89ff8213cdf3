@@ -1,0 +1,6 @@
+package Kendaraan;
+
+public abstract class Kendaraan {
+
+	
+}

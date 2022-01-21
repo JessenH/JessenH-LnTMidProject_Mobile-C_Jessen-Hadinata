@@ -1,0 +1,159 @@
+import java.util.Scanner;
+import java.util.Vector;
+import java.util.Iterator;
+import java.util.Random;
+
+public class Main {
+	
+	public static Integer genRandom(int minValue, int maxValue) {
+		        return (int) (minValue + ((new Random()).nextDouble() * (maxValue - minValue)));
+		    }
+	
+	public Main() {
+		Scanner scan = new Scanner(System.in);
+		Vector<String> nameList = new Vector<>();
+		Vector<Integer> overallList = new Vector<>();
+		Vector<Integer> salaryList = new Vector<>();
+		Vector<Integer> timeList = new Vector<>();
+		
+		String teamName = "", newName = "";
+		int choice = 0, overall=0, salary=0, time = 0, totalSalary = 0, bonus = 0;
+			
+		do {
+			
+			System.out.print("Input your team name: ");
+			teamName = scan.nextLine();
+					
+			if (teamName.length() < 1 || teamName.length() > 10) {
+				System.out.println("[Name must be between 1-10]");
+			}
+					
+		} while (teamName.length() < 1 || teamName.length() > 10);
+	
+		do {
+			if (nameList.size() != 0) {
+				System.out.println("\nNo | Name            | Overall |  Salary  | Contract Time |");
+				for (int i = 0; i < nameList.size(); i++) {
+					
+					System.out.printf("%-1d  | %-15s |   %s    | %s | %-1d Season      |", (i+1), nameList.get(i), overallList.get(i), salaryList.get(i), timeList.get(i));
+				System.out.println("");
+			}
+				System.out.println("Total Salary : " + totalSalary);
+				
+			}else {
+				System.out.println("\nThere is no player!");
+			}	
+			
+			System.out.println("\n1. Play a season");
+			System.out.println("2. Contract a player");
+			System.out.println("3. Exit");
+			
+			do {
+				System.out.print("Choice: ");
+				choice = scan.nextInt();   scan.nextLine();
+		} while (choice < 1 || choice > 3);
+			
+		switch (choice) {
+		case 1:
+			if (nameList.size() >= 5) {
+					
+			int total =	genRandom(1,100);
+			
+		
+				if (total >= 2) {
+					for (int i = 0; i+1 <= nameList.size(); i++) {
+						
+						salaryList.set(i, salaryList.get(i)+ 1500000);
+						timeList.set(i, timeList.get(i)- 1);
+						totalSalary = totalSalary + 1500000;
+						if (timeList.get(i) <= 0) {
+							nameList.remove(i);
+							overallList.remove(i);
+							salaryList.remove(i);
+							timeList.remove(i);
+							
+						}
+					}
+						
+						     
+					System.out.println("Congratulations! "+ teamName + " has win the game!");
+				}else {
+					
+					
+					System.out.println("Too bad! Try again next season !");
+				}
+					
+			}else {
+				System.out.println("[Not enough player to play]");
+			}
+			
+			break;
+
+		case 2:
+				do {
+					System.out.print("Input player name: ");
+					newName = scan.nextLine();
+							
+					if (newName.length() < 5 || newName.length() > 15) {
+						System.out.println("[Name must be between 5-15]");
+					}
+					if (!newName.contains(" ")) {
+						System.out.println("[Name must be 2 words]");
+						
+					}
+										
+				} while (newName.length() < 5 || newName.length() > 15 ||!newName.contains(" "));
+			
+				
+			do {
+				System.out.print("Input player overall: ");
+				overall = scan.nextInt(); scan.nextLine();
+				
+				if (overall < 1 || overall > 100) {
+					System.out.println("[Overall must be between 1-100]");
+				}
+				
+				
+				
+			} while (overall < 1 || overall > 100);
+			
+			
+			
+			do {		
+				System.out.print("Input player salary: ");
+				salary = scan.nextInt(); scan.nextLine();
+				
+				if (salary < 20000000 || salary > 60000000) {
+					System.out.println("[salary must be between 20.000.000-60.000.000]");
+				}
+										
+			} while (salary < 20000000 || salary > 60000000);
+			if (overall > 50) {
+			bonus = 7500000;
+				
+			}else {
+				bonus =  5000000;	
+			}
+					
+			
+			time = genRandom(1, 5);
+			
+			totalSalary = (salary * time) + bonus;
+			nameList.add(newName);
+			overallList.add(overall);
+			salaryList.add(salary);		
+			timeList.add(time);
+			
+			break;
+			
+		}
+			
+							
+		} while (choice !=3);
+		}
+
+	public static void main(String[] args) {
+		new Main();
+	}
+
+}

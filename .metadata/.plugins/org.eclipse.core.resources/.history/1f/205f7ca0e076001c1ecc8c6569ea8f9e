@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public Main() {
+		Scanner scan = new Scanner(System.in);
+		int menu =0;
+		
+		do {
+			System.out.println(" Movie Rental");
+			System.out.println("===============");
+			System.out.println("1. Add new movie");
+			System.out.println("2. View movie");
+			System.out.println("3. Rent movie");
+			System.out.println("4. Exit");
+			
+			
+			
+				
+				
+				
+		
+	
+		
+		} while (menu != 4);
+		
+		
+		
+		
+		
+
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new Main();
+
+	}
+
+}

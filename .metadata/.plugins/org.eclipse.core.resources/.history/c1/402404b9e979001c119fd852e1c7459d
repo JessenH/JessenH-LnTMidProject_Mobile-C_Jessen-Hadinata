@@ -1,0 +1,31 @@
+package Kendaraan;
+
+public class Mobil extends Kendaraan {
+//	public abstract void nyalaMobil();
+//	public abstract void nyalaSupercar();
+//	public abstract void nyalaMotor();
+	
+	public void nyalaMobil() {
+		
+		
+		
+	}
+	public void nyalaSupercar() {
+		
+		
+		
+	}
+	public void nyalaMotor() {
+		
+		
+		
+	}
+	
+	public void display() {
+		
+	
+	
+		
+	}
+	
+}

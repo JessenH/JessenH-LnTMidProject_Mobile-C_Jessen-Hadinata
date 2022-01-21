@@ -1,0 +1,80 @@
+package Kendaraan;
+
+public abstract class Kendaraan {
+	private String type;
+	private String brand;
+	private String name;
+	private String license;
+	private int topSpeed;
+	private int gasCap;
+	private int wheel;
+	private String typeCar;
+	private int entertainment;
+	private int helm;
+	
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getLicense() {
+		return license;
+	}
+	public void setLicense(String license) {
+		this.license = license;
+	}
+	public String getTopSpeed() {
+		return topSpeed;
+	}
+	public void setTopSpeed(String topSpeed) {
+		this.topSpeed = topSpeed;
+	}
+	public String getGasCap() {
+		return gasCap;
+	}
+	public void setGasCap(String gasCap) {
+		this.gasCap = gasCap;
+	}
+	public String getWheel() {
+		return wheel;
+	}
+	public void setWheel(String wheel) {
+		this.wheel = wheel;
+	}
+	public String getTypeCar() {
+		return typeCar;
+	}
+	public void setTypeCar(String typeCar) {
+		this.typeCar = typeCar;
+	}
+	public String getEntertainment() {
+		return entertainment;
+	}
+	public void setEntertainment(String entertainment) {
+		this.entertainment = entertainment;
+	}
+	public String getHelm() {
+		return helm;
+	}
+	public void setHelm(String helm) {
+		this.helm = helm;
+	}
+	
+	
+	
+	
+}

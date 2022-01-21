@@ -1,0 +1,12 @@
+package Kendaraan;
+
+public class Motor extends Kendaraan {
+	public void nyala() {
+		System.out.println("Turning on entertainment system...");
+		System.out.println("Boosting!");
+		
+		
+	}
+	
+
+}

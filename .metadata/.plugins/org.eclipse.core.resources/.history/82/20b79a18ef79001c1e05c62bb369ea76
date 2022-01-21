@@ -1,0 +1,26 @@
+package Kendaraan;
+
+public class Mobil extends Kendaraan {
+//	public abstract void nyalaMobil();
+//	public abstract void nyalaSupercar();
+//	public abstract void nyalaMotor();
+	
+	public void nyala(String type, String name) {
+		
+		if (type.equals("Supercar")) {
+			System.out.println("Boosting!");
+		}else {
+			System.out.println("Turning on entertainment system...");	
+		}
+		
+		
+	}
+	
+	public void display() {
+		
+	
+	
+		
+	}
+	
+}
